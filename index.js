@@ -7,6 +7,9 @@ const port = 3000;
 global.DEBUG = true;  
 const { getTasks } = require('./services/m.tasks.dal');
 const { addTask } = require('./services/m.tasks.dal');
+const { updateTask } = require('./services/m.tasks.dal');
+const { getTaskById } = require('./services/m.tasks.dal');
+
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +34,32 @@ app.post('/tasks/create', async (req, res) => {
   } catch (error) {
       console.error('Error creating task:', error);
       res.status(500).send('Server error');
+  }
+});
+
+app.put('/tasks/update/:id', async (req, res) => {
+  try {
+    const { name, description, status, due_date } = req.body;
+    // Check if all required fields are provided
+    if (!name || !description || !status || !due_date) {
+      return res.status(400).send('All fields (name, description, status, due_date) are required.');
+    }
+    const task = { id: req.params.id, name, description, status, due_date };
+    await updateTask(task);
+    res.redirect('/tasks');
+  } catch (error) {
+    console.error('Error updating task:', error);
+    res.status(500).send('Server error');
+  }
+});
+
+app.get('/tasks/edit/:id', async (req, res) => {
+  try {
+    const task = await getTaskById(req.params.id); // Assume getTaskById is a function you've implemented to fetch a task by ID
+    res.render('tasksPUT', { task });
+  } catch (error) {
+    console.error('Error fetching task:', error);
+    res.status(500).send('Server error');
   }
 });
 

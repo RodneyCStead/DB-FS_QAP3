@@ -1,0 +1,7 @@
+CREATE TABLE Tasks (
+	ID SERIAL NOT NULL PRIMARY KEY,
+	name VARCHAR (255) NOT NULL,
+	description TEXT,
+	status VARCHAR (50) NOT NULL,
+	due_date DATE
+)

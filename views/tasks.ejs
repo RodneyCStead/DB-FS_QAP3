@@ -11,13 +11,13 @@
             <li>
                 ID: <%= task.id %>, Name: <%= task.name %>, Description: <%= task.description %>, Status: <%= task.status %>, Due Date: <%= task.due_date.toDateString() %>
                 <!-- Edit Link -->
-                <a href="" class="button">Edit</a>
+                <a href="/tasks/patch/<%= task.id %>" class="edit-button">Edit</a>
                 
                 <!-- Replace Link (Assuming you have a view for replacing tasks) -->
-                <a href="/tasks/edit/<%= task.id %>" class="button">Replace</a>
+                <a href="/tasks/edit/<%= task.id %>" class="replace-button">Replace</a>
                 
                 <!-- Delete Link (Assuming you handle deletion through a GET request, which is not recommended for actual deletion operations) -->
-                <a href="" class="button">Delete</a>
+                <a href="" class="delete-button">Delete</a>
             </li>
         <% }) %>
     </ul>

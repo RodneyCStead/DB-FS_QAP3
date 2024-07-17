@@ -20,10 +20,17 @@ var getTaskById = async (id) => {
   return rows[0];
   };
 
+var patchTask = async (taskId, field, value) => {
+  const query = `UPDATE Tasks SET ${field}=$1 WHERE id=$2`;
+  await pool.query(query, [value, taskId]);
+};
+  
+
 module.exports = {
   getTasks,
   addTask,
   updateTask,
-  getTaskById
+  getTaskById,
+  patchTask
 };
 

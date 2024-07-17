@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patch Task</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Patch Task</h1>
+    <form action="/tasks/patch/<%= task.id %>?_method=PATCH" method="POST">
+        <select name="field">
+            <option value="name">Name</option>
+            <option value="description">Description</option>
+            <option value="status">Status</option>
+            <option value="due_date">Due Date</option>
+        </select>
+        <input type="text" name="value" placeholder="New Value" required>
+        <button type="submit">Patch Task</button>
+    </form>
+</body>
+</html>

@@ -40,7 +40,6 @@ app.post('/tasks/create', async (req, res) => {
 app.put('/tasks/update/:id', async (req, res) => {
   try {
     const { name, description, status, due_date } = req.body;
-    // Check if all required fields are provided
     if (!name || !description || !status || !due_date) {
       return res.status(400).send('All fields (name, description, status, due_date) are required.');
     }
@@ -55,7 +54,7 @@ app.put('/tasks/update/:id', async (req, res) => {
 
 app.get('/tasks/edit/:id', async (req, res) => {
   try {
-    const task = await getTaskById(req.params.id); // Assume getTaskById is a function you've implemented to fetch a task by ID
+    const task = await getTaskById(req.params.id); 
     res.render('tasksPUT', { task });
   } catch (error) {
     console.error('Error fetching task:', error);

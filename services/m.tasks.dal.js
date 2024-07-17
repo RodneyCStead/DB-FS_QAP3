@@ -21,16 +21,24 @@ var getTaskById = async (id) => {
   return rows[0];
   };
 
-  async function deleteTask(taskId) {
-    const query = 'DELETE FROM Tasks WHERE id = $1';
-    await pool.query(query, [taskId]);
-  }
+
+var patchTask = async (taskId, field, value) => {
+  const query = `UPDATE Tasks SET ${field}=$1 WHERE id=$2`;
+  await pool.query(query, [value, taskId]);
+};
+  
+async function deleteTask(taskId) {
+  const query = 'DELETE FROM Tasks WHERE id = $1';
+  await pool.query(query, [taskId]);
+}
+
 
 module.exports = {
   getTasks,
   addTask,
   updateTask,
   getTaskById,
+  patchTask,
   deleteTask
 };
 

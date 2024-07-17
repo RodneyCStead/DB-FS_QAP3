@@ -16,12 +16,9 @@
                 <!-- Replace Link (Assuming you have a view for replacing tasks) -->
                 <a href="/tasks/edit/<%= task.id %>" class="replace-button">Replace</a>
                 
-                <!-- Delete Link (Assuming you handle deletion through a GET request, which is not recommended for actual deletion operations) -->
-
-                <a href="" class="delete-button">Delete</a>
-
+                <!-- Delete Link -->
                 <form action="/tasks/delete/<%= task.id %>?_method=DELETE" method="POST" style="display: inline;">
-                    <button type="submit" class="button">Delete</button>
+                    <button type="submit" class="delete-button">Delete</button>
                 </form>
             </li>
         <% }) %>
@@ -36,7 +33,7 @@
             <option value="Pass due">Pass due</option>
         </select>
         <input type="date" name="due_date" required>
-        <button type="submit">Add Task</button>
+        <button type="submit" class = "button">Add Task</button>
     </form>
 </body>
 </html>

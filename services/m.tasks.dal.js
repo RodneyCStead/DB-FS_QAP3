@@ -15,15 +15,22 @@ var updateTask = async (task) => {
   await pool.query('UPDATE Tasks SET name=$2, description=$3, status=$4, due_date=$5 WHERE id=$1', [id, name, description, status, due_date]);
   };
 
+
 var getTaskById = async (id) => {
   const { rows } = await pool.query('SELECT * FROM Tasks WHERE id=$1', [id]);
   return rows[0];
   };
 
+  async function deleteTask(taskId) {
+    const query = 'DELETE FROM Tasks WHERE id = $1';
+    await pool.query(query, [taskId]);
+  }
+
 module.exports = {
   getTasks,
   addTask,
   updateTask,
-  getTaskById
+  getTaskById,
+  deleteTask
 };
 

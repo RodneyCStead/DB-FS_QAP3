@@ -17,7 +17,9 @@
                 <a href="/tasks/edit/<%= task.id %>" class="button">Replace</a>
                 
                 <!-- Delete Link (Assuming you handle deletion through a GET request, which is not recommended for actual deletion operations) -->
-                <a href="" class="button">Delete</a>
+                <form action="/tasks/delete/<%= task.id %>?_method=DELETE" method="POST" style="display: inline;">
+                    <button type="submit" class="button">Delete</button>
+                </form>
             </li>
         <% }) %>
     </ul>

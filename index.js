@@ -9,6 +9,7 @@ const { getTasks } = require('./services/m.tasks.dal');
 const { addTask } = require('./services/m.tasks.dal');
 const { updateTask } = require('./services/m.tasks.dal');
 const { getTaskById } = require('./services/m.tasks.dal');
+const { deleteTask } = require('./services/m.tasks.dal');
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -58,6 +59,19 @@ app.get('/tasks/edit/:id', async (req, res) => {
     res.render('tasksPUT', { task });
   } catch (error) {
     console.error('Error fetching task:', error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+app.delete('/tasks/delete/:id', async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    // Assuming deleteTask is a function that executes the SQL DELETE statement
+    await deleteTask(taskId);
+    res.redirect('/tasks');
+  } catch (error) {
+    console.error('Error deleting task:', error);
     res.status(500).send('Server error');
   }
 });

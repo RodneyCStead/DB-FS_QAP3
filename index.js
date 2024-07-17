@@ -7,6 +7,7 @@ const port = 3000;
 global.DEBUG = true;  
 const { getTasks } = require('./services/m.tasks.dal');
 const { addTask } = require('./services/m.tasks.dal');
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));

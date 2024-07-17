@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Tasks</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1>Tasks</h1>
@@ -10,6 +11,7 @@
             <li>ID: <%= task.id %>, Name: <%= task.name %>, Description: <%= task.description %>, Status: <%= task.status %>, Due Date: <%= task.due_date.toDateString() %></li>
         <% }) %>
     </ul>
+    <h2>Add Task</h2>
     <form action="/tasks/create" method="POST">
         <input type="text" name="name" placeholder="Task Name" required>
         <textarea name="description" placeholder="Description"></textarea>

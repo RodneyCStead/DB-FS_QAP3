@@ -8,7 +8,17 @@
     <h1>Tasks</h1>
     <ul>
         <% tasks.forEach(task => { %>
-            <li>ID: <%= task.id %>, Name: <%= task.name %>, Description: <%= task.description %>, Status: <%= task.status %>, Due Date: <%= task.due_date.toDateString() %></li>
+            <li>
+                ID: <%= task.id %>, Name: <%= task.name %>, Description: <%= task.description %>, Status: <%= task.status %>, Due Date: <%= task.due_date.toDateString() %>
+                <!-- Edit Link -->
+                <a href="" class="button">Edit</a>
+                
+                <!-- Replace Link (Assuming you have a view for replacing tasks) -->
+                <a href="/tasks/edit/<%= task.id %>" class="button">Replace</a>
+                
+                <!-- Delete Link (Assuming you handle deletion through a GET request, which is not recommended for actual deletion operations) -->
+                <a href="" class="button">Delete</a>
+            </li>
         <% }) %>
     </ul>
     <h2>Add Task</h2>

@@ -111,7 +111,7 @@ app.patch('/tasks/patch/:id', async (req, res) => {
       return res.status(400).send('Wrong date format entered. Please use yyyy-mm-dd format.');
     }
 
-    // Call the patchTask function (imported from services/m.tasks.dal.js) to update the specified field of the task in the database.
+    // Call the patchTask function to update the specified field of the task in the database.
     await patchTask(taskId, field, value); 
     // After successful update, redirect the client to the tasks listing page.
     res.redirect('/tasks');

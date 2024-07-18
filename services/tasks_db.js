@@ -1,3 +1,5 @@
+// Purpose: Database connection for tasks.
+
 const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'postgres',
